@@ -1,0 +1,21 @@
+1. OVERVIEW
+===========
+
+ZSTD compressed stdout tool using NVIDIA nvCOMP
+
+Compression Algorithms:
+zStandard: Huffman + LZ77 + ANS, popular compression format developed by Meta.
+
+2. BUILD
+================================================
+
+    cmake -B build -S . \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_CXX_COMPILER=g++-11 \
+        -DCMAKE_CUDA_HOST_COMPILER=g++-11
+    cmake --build build --parallel "$(nproc)"
+
+3. BASIC USAGE
+==============
+
+    cat archive.tar | zstd_nvcomp > archive.tar.zst
